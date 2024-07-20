@@ -10,10 +10,6 @@ public class CitiesController : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<CityDto>> GetCites()
     {
-        // return new JsonResult(
-        //     CitiesDataStore.Current.Cities
-        // );
-
         return Ok(CitiesDataStore.Current.Cities);
     }
 
@@ -30,7 +26,7 @@ public class CitiesController : ControllerBase
         
         return Ok(cityToReturn);
     }
-
+    
     // [HttpPost]
     // public IActionResult CreateCity([FromBody] CityDto city)
     // {
