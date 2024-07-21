@@ -5,9 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Register support for controllers in our container.
 builder.Services.AddControllers(options =>
-{
-    options.ReturnHttpNotAcceptable = true;  // 406 Not Acceptable
-}).AddXmlDataContractSerializerFormatters(); // adding support for xml 
+    {
+        options.ReturnHttpNotAcceptable = true; // 406 Not Acceptable
+    }).AddNewtonsoftJson()
+    .AddXmlDataContractSerializerFormatters(); // adding support for xml 
 
 builder.Services.AddProblemDetails(options =>
 {
@@ -37,9 +38,6 @@ app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthorization();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
+app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
 app.Run();
