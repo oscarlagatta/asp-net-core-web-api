@@ -1,6 +1,19 @@
+using CityInfo.API;
+using CityInfo.API.services;
 using Microsoft.AspNetCore.StaticFiles;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File("logs/cityinfo.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+// builder.Logging.ClearProviders();
+// builder.Logging.AddConsole();
+
+builder.Host.UseSerilog(); 
 
 // Add services to the container.
 // Register support for controllers in our container.
@@ -9,6 +22,8 @@ builder.Services.AddControllers(options =>
         options.ReturnHttpNotAcceptable = true; // 406 Not Acceptable
     }).AddNewtonsoftJson()
     .AddXmlDataContractSerializerFormatters(); // adding support for xml 
+
+builder.Services.AddProblemDetails();
 
 builder.Services.AddProblemDetails(options =>
 {
@@ -24,9 +39,23 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 
+
+#if DEBUG
+builder.Services.AddTransient<IMailService, LocalMailService>();
+#else
+builder.Services.AddTransient<IMailService, CloudMailService>();
+#endif
+
+builder.Services.AddSingleton<CitiesDataStore>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler();
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
