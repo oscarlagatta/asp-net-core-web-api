@@ -1,6 +1,8 @@
 using CityInfo.API;
+using CityInfo.API.DbContext;
 using CityInfo.API.services;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -13,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 // builder.Logging.ClearProviders();
 // builder.Logging.AddConsole();
 
-builder.Host.UseSerilog(); 
+builder.Host.UseSerilog();
 
 // Add services to the container.
 // Register support for controllers in our container.
@@ -47,6 +49,11 @@ builder.Services.AddTransient<IMailService, CloudMailService>();
 #endif
 
 builder.Services.AddSingleton<CitiesDataStore>();
+
+// Production database connection string could be stored in an Azure Key Vault.
+builder.Services.AddDbContext<CityInfoContext>(dbContextOptions
+    => dbContextOptions.UseSqlite(
+        builder.Configuration["ConnectionStrings:CityInfoDBConnectionString"]));
 
 var app = builder.Build();
 
