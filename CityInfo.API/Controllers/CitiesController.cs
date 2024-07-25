@@ -2,6 +2,7 @@ using AutoMapper;
 using CityInfo.API.Models;
 using CityInfo.API.services;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace CityInfo.API.Controllers;
 
@@ -11,6 +12,8 @@ public class CitiesController : ControllerBase
 {
     private readonly ICityInfoRepository _cityInfoRepository;
     private readonly IMapper _mapper;
+
+    private const int maxCitiesPageAize = 20;
 
     public CitiesController(ICityInfoRepository cityInfoRepository, IMapper mapper)
     {
@@ -23,9 +26,20 @@ public class CitiesController : ControllerBase
     /// </summary>
     /// <returns>An asynchronous task that represents the operation. The task result contains the list of cities without points of interest.</returns>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CityWithoutPointsOfInterestDto>>> GetCites()
+    public async Task<ActionResult<IEnumerable<CityWithoutPointsOfInterestDto>>> GetCites(
+        string? name, string? searchQuery, int pageNumber = 1, int pageSize = 10)
     {
-        var cityEntities = await _cityInfoRepository.GetCitiesAsync();
+        if (pageSize > maxCitiesPageAize)
+        {
+            pageSize = maxCitiesPageAize;
+        }
+
+        var (cityEntities, paginationMetadata) = await _cityInfoRepository
+            .GetCitiesAsync(name, searchQuery, pageNumber, pageSize);
+
+        Response.Headers.Add("X-Pagination",
+            JsonSerializer.Serialize(paginationMetadata));
+
 
         return Ok(_mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities));
     }
@@ -37,9 +51,8 @@ public class CitiesController : ControllerBase
     /// <param name="includePointsOfInterest">Optional. If set to true, includes the points of interest for the city. Default is false.</param>
     /// <returns>An asynchronous task that represents the operation. The task result contains the ActionResult with the city or not found response.</returns>
     [HttpGet("{id}")]
-    public async  Task<IActionResult> GetCity(int id, bool includePointsOfInterest = false)
+    public async Task<IActionResult> GetCity(int id, bool includePointsOfInterest = false)
     {
-
         var city = await _cityInfoRepository.GetCityAsync(id, includePointsOfInterest);
 
         if (city == null)
@@ -49,7 +62,7 @@ public class CitiesController : ControllerBase
 
         if (includePointsOfInterest)
         {
-            return Ok(_mapper.Map<CityDto>(city));    
+            return Ok(_mapper.Map<CityDto>(city));
         }
 
         return Ok(_mapper.Map<CityWithoutPointsOfInterestDto>(city));
