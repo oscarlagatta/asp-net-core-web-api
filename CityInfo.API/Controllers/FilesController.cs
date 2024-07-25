@@ -17,6 +17,11 @@ namespace CityInfo.API.Controllers
                                                     nameof(fileExtensionContentTypeProvider));
         }
 
+        /// <summary>
+        /// Retrieves a file based on the given fileId.
+        /// </summary>
+        /// <param name="fileId">The ID of the file to retrieve.</param>
+        /// <returns>An ActionResult object representing the file.</returns>
         [HttpGet("{fileId}")]
         public ActionResult GetFile(string fileId)
         {
@@ -39,7 +44,12 @@ namespace CityInfo.API.Controllers
             var bytes = System.IO.File.ReadAllBytes(pathToFile);
             return File(bytes, contentType , Path.GetFileName(pathToFile));
         }
-        
+
+        /// <summary>
+        /// Creates a file based on the given input file.
+        /// </summary>
+        /// <param name="file">The input file to create.</param>
+        /// <returns>An ActionResult representing the result of the file creation.</returns>
         [HttpPost]
         public async Task<ActionResult> CreateFile(IFormFile file)
         {
