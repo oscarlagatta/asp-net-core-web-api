@@ -1,0 +1,3 @@
+2024-07-27 12:22:04.629 +01:00 [INF] Application is shutting down...
+2024-07-27 12:22:04.636 +01:00 [DBG] Hosting stopping
+2024-07-27 12:22:04.689 +01:00 [DBG] Hosting stopped
