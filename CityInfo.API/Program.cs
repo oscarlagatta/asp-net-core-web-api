@@ -78,7 +78,7 @@ builder.Services.AddScoped<ICityInfoRepository, CityInfoRepository>();
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("MustBeFromAntwerp", policy =>
+    options.AddPolicy("MustBeFromLondon", policy =>
     {
         policy.RequireAuthenticatedUser();
         policy.RequireClaim("city", "London");
