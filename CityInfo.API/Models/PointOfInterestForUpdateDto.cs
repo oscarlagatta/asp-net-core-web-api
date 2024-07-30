@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CityInfo.API.Models;
 
+/// <summary>
+/// DTO class for updating a point of interest.
+/// </summary>
 public class PointOfInterestForUpdateDto
 {
     [Required(ErrorMessage = "You should provide a name value.")]

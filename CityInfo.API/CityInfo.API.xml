@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CityInfo.API</name>
+    </assembly>
+    <members>
+        <member name="T:CityInfo.API.Controllers.CitiesController">
+            <summary>
+            Represents a controller for managing cities in the CityInfo API.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Controllers.CitiesController.GetCites(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves a list of cities from the repository based on the specified criteria.
+            </summary>
+            <param name="name">Optional. The name of the city to search for.</param>
+            <param name="searchQuery">Optional. The search query to filter cities.</param>
+            <param name="pageNumber">Optional. The page number of the results to retrieve. Default is 1.</param>
+            <param name="pageSize">Optional. The maximum number of cities per page. Default is 10.</param>
+            <returns>An asynchronous task that represents the operation. The task result contains the ActionResult with the list of cities.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.CitiesController.GetCity(System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a city from the repository by its ID.
+            </summary>
+            <param name="id">The ID of the city to retrieve.</param>
+            <param name="includePointsOfInterest">Optional. If set to true, includes the points of interest for the city. Default is false.</param>
+            <returns>An asynchronous task that represents the operation. The task result contains the ActionResult with the city or not found response.</returns>
+            <response code="200">Returns the requested City</response>
+            <response code="404">City Not Found</response>
+        </member>
+        <member name="M:CityInfo.API.Controllers.FilesController.GetFile(System.String)">
+            <summary>
+            Retrieves a file based on the given fileId.
+            </summary>
+            <param name="fileId">The ID of the file to retrieve.</param>
+            <returns>An ActionResult object representing the file.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.FilesController.CreateFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Creates a file based on the given input file.
+            </summary>
+            <param name="file">The input file to create.</param>
+            <returns>An ActionResult representing the result of the file creation.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.#ctor(Microsoft.Extensions.Logging.ILogger{CityInfo.API.Controllers.PointsOfInterestController},CityInfo.API.services.IMailService,CityInfo.API.services.ICityInfoRepository,AutoMapper.IMapper)">
+            <summary>
+            Controller that handles API routes related to points of interest for cities.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest(System.Int32)">
+            <summary>
+            Retrieves the points of interest for a specific city.
+            </summary>
+            <param name="cityId">The ID of the city.</param>
+            <returns>An ActionResult containing a collection of PointOfInterestDto objects.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.GetPointOfInterest(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a specific point of interest for a city.
+            </summary>
+            <param name="cityId">The ID of the city.</param>
+            <param name="pointOfInterestId">The ID of the point of interest.</param>
+            <returns>An ActionResult containing the PointOfInterestDto object for the specified city and point of interest.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.CreatePointOfInterest(System.Int32,CityInfo.API.Models.PointOfInterestForCreationDto)">
+            <summary>
+            Creates a new point of interest for a city.
+            </summary>
+            <param name="cityId">The ID of the city.</param>
+            <param name="pointOfInterest">The data of the point of interest to be created.</param>
+            <returns>An ActionResult of type PointOfInterestDto representing the newly created point of interest.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.UpdatePointOfInterest(System.Int32,System.Int32,CityInfo.API.Models.PointOfInterestForUpdateDto)">
+            <summary>
+            Updates a point of interest for a city.
+            </summary>
+            <param name="cityId">The ID of the city.</param>
+            <param name="pointOfInterestId">The ID of the point of interest.</param>
+            <param name="pointOfInterest">The updated point of interest details.</param>
+            <returns>Returns a <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> indicating the success or failure of the update operation.</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.PartiallyUpdatePointOfInterest(System.Int32,System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{CityInfo.API.Models.PointOfInterestForUpdateDto})">
+            <summary>
+            Partially updates a point of interest for a city.
+            </summary>
+            <param name="cityId">The ID of the city.</param>
+            <param name="pointOfInterestId">The ID of the point of interest.</param>
+            <param name="patchDocument">The JSON patch document containing the updates.</param>
+            <returns>The updated point of interest. If the city or the point of interest does not exist, returns NotFound().
+            If the patch document is invalid, returns BadRequest(ModelState). Otherwise, returns NoContent().</returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest(System.Int32,System.Int32)">
+            <summary>
+            Deletes a point of interest for a specific city.
+            </summary>
+            <param name="cityId">The ID of the city.</param>
+            <param name="pointOfInterestId">The ID of the point of interest.</param>
+            <returns>An ActionResult representing the result of the delete operation.</returns>
+        </member>
+        <member name="T:CityInfo.API.Entities.City">
+            <summary>
+            Represents a city.
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Entities.PointOfInterest">
+            <summary>
+            Represents a point of interest in a city.
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CityInfo.API.Migrations.CityInfoDBAddPOIDescription">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.CityInfoDBAddPOIDescription.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.CityInfoDBAddPOIDescription.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.CityInfoDBAddPOIDescription.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CityInfo.API.Migrations.InitialDataSeed">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.InitialDataSeed.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.InitialDataSeed.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.InitialDataSeed.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CityInfo.API.Migrations.UpdateDatabasePointsOfInterest">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.UpdateDatabasePointsOfInterest.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.UpdateDatabasePointsOfInterest.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.UpdateDatabasePointsOfInterest.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CityInfo.API.Models.CityDto">
+            <summary>
+            Represents a city data transfer object (DTO).
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Models.CityWithoutPointsOfInterestDto">
+            <summary>
+            Represents a city without points of interest.
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Models.PointOfInterestDto">
+            <summary>
+            Represents a point of interest data transfer object (DTO).
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Models.PointOfInterestForCreationDto">
+            <summary>
+            Represents a point of interest data transfer object for creation.
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Models.PointOfInterestForUpdateDto">
+            <summary>
+            DTO class for updating a point of interest.
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.services.CityInfoRepository.GetCitiesAsync">
+            <summary>
+            Retrieves all cities in the database ordered by Name.
+            </summary>
+            <returns>
+            Returns a collection of City objects representing all cities in the database
+            ordered by Name.
+            </returns>
+        </member>
+        <member name="M:CityInfo.API.services.CityInfoRepository.GetCitiesAsync(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves all cities in the database ordered by Name.
+            </summary>
+            <param name="name">Optional. The name of the city to filter by. If provided, only cities with matching names
+            will be returned.</param>
+            <param name="searchQuery">Optional. The search query to filter by. If provided, cities with names or
+            descriptions containing the search query will be returned.</param>
+            <returns>
+            Returns a collection of City objects representing all cities in the database
+            ordered by Name. If the name and searchQuery parameters are provided, the
+            returned collection will be filtered accordingly.
+            </returns>
+        </member>
+        <member name="M:CityInfo.API.services.CityInfoRepository.GetCityAsync(System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a specific city from the database.
+            </summary>
+            <param name="cityId">The ID of the city to retrieve.</param>
+            <param name="includePointsOfInterest">A flag indicating whether to include the city's points of interest.</param>
+            <returns>    
+            Returns a City object representing the specific city with the given ID.
+            If includePointsOfInterest is true, the City object will also include the associated points of interest.
+            If no city with the given ID is found, returns null.
+            </returns>
+        </member>
+        <member name="M:CityInfo.API.services.CityInfoRepository.CityExistsAsync(System.Int32)">
+            <summary>
+            Checks if a city with the given ID exists in the database.
+            </summary>
+            <param name="cityId">The ID of the city to check.</param>
+            <returns>
+            Returns true if a city with the given ID exists in the database, otherwise returns false.
+            </returns>
+        </member>
+        <member name="M:CityInfo.API.services.CityInfoRepository.GetPointOfInterestForCityAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a specific point of interest from the database.
+            </summary>
+            <param name="cityId">The ID of the city containing the point of interest.</param>
+            <param name="pointOfInterestId">The ID of the point of interest to retrieve.</param>
+            <returns>
+            Returns a PointOfInterest object representing the specific point of interest with the given ID.
+            If no point of interest with the given ID is found in the city, returns null.
+            </returns>
+        </member>
+        <member name="M:CityInfo.API.services.CityInfoRepository.GetPointsOfInterestForCityAsync(System.Int32)">
+            <summary>
+            Retrieves all points of interest for a specific city from the database.
+            </summary>
+            <param name="cityId">The ID of the city for which to retrieve points of interest.</param>
+            <returns>
+            Returns a collection of PointOfInterest objects representing all points of interest
+            associated with the specified city.
+            </returns>
+        </member>
+        <member name="M:CityInfo.API.services.CityInfoRepository.AddPointOfInterestForCityAsync(System.Int32,CityInfo.API.Entities.PointOfInterest)">
+            <summary>
+            Adds a point of interest for a specific city in the database.
+            </summary>
+            <param name="cityId">The ID of the city to add the point of interest for.</param>
+            <param name="pointOfInterest">The PointOfInterest object representing the point of interest to be added.</param>
+            <returns>A Task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:CityInfo.API.services.CityInfoRepository.DeletePointOfInterest(CityInfo.API.Entities.PointOfInterest)">
+            <summary>
+            Deletes a point of interest from the database.
+            </summary>
+            <param name="pointOfInterest">The point of interest to delete.</param>
+        </member>
+        <member name="M:CityInfo.API.services.CityInfoRepository.SaveChangesAsync">
+            <summary>
+            Saves all changes made in the context to the underlying data storage.
+            </summary>
+            <returns>
+            Returns a boolean value indicating whether the changes were successfully saved or not.
+            </returns>
+        </member>
+    </members>
+</doc>
