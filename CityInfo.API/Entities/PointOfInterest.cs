@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CityInfo.API.Entities;
 
+/// <summary>
+/// Represents a point of interest in a city.
+/// </summary>
 public class PointOfInterest
 {
     [Key]

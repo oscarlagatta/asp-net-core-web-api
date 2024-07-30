@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CityInfo.API.Entities;
 
+/// <summary>
+/// Represents a city.
+/// </summary>
 public class City
 {
     [Key]

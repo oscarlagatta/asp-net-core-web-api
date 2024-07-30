@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using AutoMapper;
 using CityInfo.API.Entities;
 using CityInfo.API.Models;
@@ -8,8 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CityInfo.API.Controllers;
 
-[Route("api/cities/{cityId}/pointsofinterest")]
+[Route("api/v{version:apiVersion}/cities/{cityId}/pointsofinterest")]
 [Authorize(Policy = "MustBeFromLondon")]
+[ApiVersion(2)] // https://localhost:7068/api/cities/1/pointsofinterest?api-version=2
 [ApiController]
 public class PointsOfInterestController : ControllerBase
 {

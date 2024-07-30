@@ -1,5 +1,8 @@
 namespace CityInfo.API.Models;
 
+/// <summary>
+/// Represents a city data transfer object (DTO).
+/// </summary>
 public class CityDto
 {
     public int Id { get; set; }
