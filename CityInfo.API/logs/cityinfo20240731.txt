@@ -1,0 +1,102 @@
+2024-07-31 00:01:12.449 +01:00 [DBG] Connection id "0HN5GT8H3H6RC" received FIN.
+2024-07-31 00:01:12.451 +01:00 [DBG] Connection id "0HN5GT8H3H6RC" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-07-31 00:01:12.451 +01:00 [DBG] Connection id "0HN5GT8H3H6RC" disconnecting.
+2024-07-31 00:01:12.451 +01:00 [DBG] Connection id "0HN5GT8H3H6RC" stopped.
+2024-07-31 00:01:55.364 +01:00 [INF] Application is shutting down...
+2024-07-31 00:01:55.373 +01:00 [DBG] Hosting stopping
+2024-07-31 00:01:55.406 +01:00 [DBG] Hosting stopped
+2024-07-31 00:02:04.207 +01:00 [DBG] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-07-31 00:02:04.274 +01:00 [DBG] Hosting starting
+2024-07-31 00:02:04.281 +01:00 [INF] User profile is available. Using '/Users/oscarlagatta/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-07-31 00:02:04.288 +01:00 [DBG] Reading data from file '/Users/oscarlagatta/.aspnet/DataProtection-Keys/key-5b784b7f-4b8e-498f-83c5-e686556744e9.xml'.
+2024-07-31 00:02:04.293 +01:00 [DBG] Reading data from file '/Users/oscarlagatta/.aspnet/DataProtection-Keys/key-27caac4e-9d23-4fe0-862b-222a98af4893.xml'.
+2024-07-31 00:02:04.296 +01:00 [DBG] Found key {5b784b7f-4b8e-498f-83c5-e686556744e9}.
+2024-07-31 00:02:04.299 +01:00 [DBG] Found key {27caac4e-9d23-4fe0-862b-222a98af4893}.
+2024-07-31 00:02:04.305 +01:00 [DBG] Considering key {5b784b7f-4b8e-498f-83c5-e686556744e9} with expiration date 2024-10-18 08:20:33Z as default key.
+2024-07-31 00:02:04.307 +01:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-07-31 00:02:04.310 +01:00 [DBG] Using managed symmetric algorithm 'System.Security.Cryptography.Aes'.
+2024-07-31 00:02:04.310 +01:00 [DBG] Using managed keyed hash algorithm 'System.Security.Cryptography.HMACSHA256'.
+2024-07-31 00:02:04.315 +01:00 [DBG] Using key {5b784b7f-4b8e-498f-83c5-e686556744e9} as the default key.
+2024-07-31 00:02:04.315 +01:00 [DBG] Key ring with default key {5b784b7f-4b8e-498f-83c5-e686556744e9} was loaded during application startup.
+2024-07-31 00:02:04.653 +01:00 [INF] Now listening on: https://localhost:7068
+2024-07-31 00:02:04.653 +01:00 [INF] Now listening on: http://localhost:5006
+2024-07-31 00:02:04.653 +01:00 [DBG] Loaded hosting startup assembly CityInfo.API
+2024-07-31 00:02:04.653 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-31 00:02:04.654 +01:00 [INF] Hosting environment: Development
+2024-07-31 00:02:04.654 +01:00 [INF] Content root path: /Users/oscarlagatta/Documents/sandbox/apis/CityInfo/CityInfo.API
+2024-07-31 00:02:04.654 +01:00 [DBG] Hosting started
+2024-07-31 00:02:05.120 +01:00 [DBG] Connection id "0HN5GTEGM67VR" received FIN.
+2024-07-31 00:02:05.129 +01:00 [DBG] Connection id "0HN5GTEGM67VR" accepted.
+2024-07-31 00:02:05.131 +01:00 [DBG] Connection id "0HN5GTEGM67VR" started.
+2024-07-31 00:02:05.151 +01:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-07-31 00:02:05.177 +01:00 [DBG] Connection id "0HN5GTEGM67VR" stopped.
+2024-07-31 00:02:05.182 +01:00 [DBG] Connection id "0HN5GTEGM67VR" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-07-31 00:02:05.317 +01:00 [DBG] Connection id "0HN5GTEGM67VS" accepted.
+2024-07-31 00:02:05.317 +01:00 [DBG] Connection id "0HN5GTEGM67VS" started.
+2024-07-31 00:02:05.399 +01:00 [DBG] Connection 0HN5GTEGM67VS established using the following protocol: "Tls12"
+2024-07-31 00:02:05.433 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7068/swagger/index.html - null null
+2024-07-31 00:02:05.435 +01:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-07-31 00:02:05.465 +01:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-07-31 00:02:05.591 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7068/swagger/index.html - 200 null text/html;charset=utf-8 162.2003ms
+2024-07-31 00:02:05.820 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7068/swagger/0.1/swagger.json - null null
+2024-07-31 00:02:05.821 +01:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-07-31 00:02:05.963 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7068/swagger/0.1/swagger.json - 200 null application/json;charset=utf-8 143.609ms
+2024-07-31 00:02:34.776 +01:00 [DBG] Connection id "0HN5GTEGM67VT" accepted.
+2024-07-31 00:02:34.776 +01:00 [DBG] Connection id "0HN5GTEGM67VT" started.
+2024-07-31 00:02:34.806 +01:00 [DBG] Connection 0HN5GTEGM67VT established using the following protocol: "Tls12"
+2024-07-31 00:02:34.844 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7068/swagger/2.0/swagger.json - null null
+2024-07-31 00:02:34.847 +01:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-07-31 00:02:34.915 +01:00 [DBG] Connection id "0HN5GTEGM67VT" completed keep alive response.
+2024-07-31 00:02:34.915 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7068/swagger/2.0/swagger.json - 200 null application/json;charset=utf-8 70.9383ms
+2024-07-31 00:02:57.118 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7068/swagger/2.0/swagger.json - null null
+2024-07-31 00:02:57.118 +01:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-07-31 00:02:57.132 +01:00 [DBG] Connection id "0HN5GTEGM67VT" completed keep alive response.
+2024-07-31 00:02:57.133 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7068/swagger/2.0/swagger.json - 200 null application/json;charset=utf-8 14.7931ms
+2024-07-31 00:02:57.181 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7068/api/v2/cities - null null
+2024-07-31 00:02:57.181 +01:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-07-31 00:02:57.183 +01:00 [DBG] The request path  does not match the path filter
+2024-07-31 00:02:57.261 +01:00 [DBG] 1 candidate(s) found for the request path '/api/v2/cities'
+2024-07-31 00:02:57.266 +01:00 [DBG] Endpoint 'CityInfo.API.Controllers.CitiesController.GetCites (CityInfo.API)' with route pattern 'api/v{version:apiVersion}/cities' is valid for the request path '/api/v2/cities'
+2024-07-31 00:02:57.271 +01:00 [DBG] Request matched endpoint 'CityInfo.API.Controllers.CitiesController.GetCites (CityInfo.API)'
+2024-07-31 00:02:57.275 +01:00 [DBG] Policy authentication schemes  did not succeed
+2024-07-31 00:02:57.277 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-31 00:02:57.282 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-31 00:02:57.282 +01:00 [DBG] Connection id "0HN5GTEGM67VT" completed keep alive response.
+2024-07-31 00:02:57.283 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7068/api/v2/cities - 401 0 null 102.1357ms
+2024-07-31 00:04:04.770 +01:00 [DBG] Connection id "0HN5GTEGM67VT" received FIN.
+2024-07-31 00:04:04.770 +01:00 [DBG] Connection id "0HN5GTEGM67VT" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-07-31 00:04:04.771 +01:00 [DBG] Connection id "0HN5GTEGM67VT" disconnecting.
+2024-07-31 00:04:04.772 +01:00 [DBG] Connection id "0HN5GTEGM67VT" stopped.
+2024-07-31 00:04:07.744 +01:00 [DBG] Connection id "0HN5GTEGM67VU" accepted.
+2024-07-31 00:04:07.744 +01:00 [DBG] Connection id "0HN5GTEGM67VU" started.
+2024-07-31 00:04:07.760 +01:00 [DBG] Connection 0HN5GTEGM67VU established using the following protocol: "Tls12"
+2024-07-31 00:04:07.783 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7068/swagger/2.0/swagger.json - null null
+2024-07-31 00:04:07.805 +01:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-07-31 00:04:07.839 +01:00 [DBG] Connection id "0HN5GTEGM67VU" completed keep alive response.
+2024-07-31 00:04:07.846 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7068/swagger/2.0/swagger.json - 200 null application/json;charset=utf-8 63.8344ms
+2024-07-31 00:04:17.426 +01:00 [DBG] Connection id "0HN5GTEGM67VS" is closing.
+2024-07-31 00:04:17.430 +01:00 [DBG] Connection id "0HN5GTEGM67VS" is closed. The last processed stream ID was 3.
+2024-07-31 00:04:17.431 +01:00 [DBG] Connection id "0HN5GTEGM67VS" received FIN.
+2024-07-31 00:04:17.431 +01:00 [DBG] Connection id "0HN5GTEGM67VS" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-07-31 00:04:17.433 +01:00 [DBG] The connection queue processing loop for 0HN5GTEGM67VS completed.
+2024-07-31 00:04:17.433 +01:00 [DBG] Connection id "0HN5GTEGM67VS" stopped.
+2024-07-31 00:04:19.509 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7068/swagger/2.0/swagger.json - null null
+2024-07-31 00:04:19.510 +01:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-07-31 00:04:19.520 +01:00 [DBG] Connection id "0HN5GTEGM67VU" completed keep alive response.
+2024-07-31 00:04:19.520 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7068/swagger/2.0/swagger.json - 200 null application/json;charset=utf-8 10.7176ms
+2024-07-31 00:05:11.302 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7068/swagger/2.0/swagger.json - null null
+2024-07-31 00:05:11.302 +01:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-07-31 00:05:11.311 +01:00 [DBG] Connection id "0HN5GTEGM67VU" completed keep alive response.
+2024-07-31 00:05:11.311 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7068/swagger/2.0/swagger.json - 200 null application/json;charset=utf-8 9.3127ms
+2024-07-31 00:06:19.777 +01:00 [DBG] Connection id "0HN5GTEGM67VU" received FIN.
+2024-07-31 00:06:19.778 +01:00 [DBG] Connection id "0HN5GTEGM67VU" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-07-31 00:06:19.778 +01:00 [DBG] Connection id "0HN5GTEGM67VU" disconnecting.
+2024-07-31 00:06:19.778 +01:00 [DBG] Connection id "0HN5GTEGM67VU" stopped.
+2024-07-31 00:18:36.039 +01:00 [INF] Application is shutting down...
+2024-07-31 00:18:36.043 +01:00 [DBG] Hosting stopping
+2024-07-31 00:18:36.091 +01:00 [DBG] Hosting stopped

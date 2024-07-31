@@ -60,18 +60,18 @@ public class CitiesController : ControllerBase
     /// <summary>
     /// Retrieves a city from the repository by its ID.
     /// </summary>
-    /// <param name="id">The ID of the city to retrieve.</param>
+    /// <param name="cityId">The ID of the city to retrieve.</param>
     /// <param name="includePointsOfInterest">Optional. If set to true, includes the points of interest for the city. Default is false.</param>
     /// <returns>An asynchronous task that represents the operation. The task result contains the ActionResult with the city or not found response.</returns>
     /// <response code="200">Returns the requested City</response>
     /// <response code="404">City Not Found</response>
-    [HttpGet("{id}")]
+    [HttpGet("{cityId}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetCity(int id, bool includePointsOfInterest = false)
+    public async Task<IActionResult> GetCity(int cityId, bool includePointsOfInterest = false)
     {
-        var city = await _cityInfoRepository.GetCityAsync(id, includePointsOfInterest);
+        var city = await _cityInfoRepository.GetCityAsync(cityId, includePointsOfInterest);
 
         if (city == null)
         {
