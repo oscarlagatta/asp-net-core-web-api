@@ -1,10 +1,14 @@
 using System.Reflection;
+using System.Text.Json;
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using CityInfo.API;
 using CityInfo.API.DbContext;
 using CityInfo.API.services;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -13,14 +17,38 @@ using Serilog;
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
     .WriteTo.Console()
-    .WriteTo.File("logs/cityinfo.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 // builder.Logging.ClearProviders();
 // builder.Logging.AddConsole();
 
-builder.Host.UseSerilog();
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+if (environment == Environments.Development)
+{
+    builder.Host.UseSerilog(
+        (context, LoggerConfiguration) => LoggerConfiguration
+            .MinimumLevel.Debug()
+            .WriteTo.Console()
+    );
+}
+else
+{
+    builder.Host.UseSerilog((context, LoggerConfiguration) =>
+        LoggerConfiguration.MinimumLevel.Debug()
+            .WriteTo.Console()
+            .WriteTo.File("logs/cityinfo.txt", rollingInterval: RollingInterval.Day)
+            .WriteTo.ApplicationInsights(
+                new TelemetryConfiguration()
+                {
+                    InstrumentationKey = builder.Configuration["ApplicationInsightsInstrumentationKey"]
+                },
+                TelemetryConverter.Traces
+            )
+    );
+}
+
 
 // Add services to the container.
 // Register support for controllers in our container.
@@ -143,27 +171,35 @@ builder.Services.AddSwaggerGen(setupAction =>
     });
 });
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler();
+    app.UseDeveloperExceptionPage();
+    // app.UseExceptionHandler();
 }
 
-if (app.Environment.IsDevelopment())
+app.UseForwardedHeaders();
+
+// if (app.Environment.IsDevelopment())
+// {
+app.UseSwagger();
+app.UseSwaggerUI(setupAction =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(setupAction =>
+    var descriptions = app.DescribeApiVersions();
+    foreach (var description in descriptions)
     {
-        var descriptions = app.DescribeApiVersions();
-        foreach (var description in descriptions)
-        {
-            setupAction.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
-                description.GroupName.ToUpperInvariant());
-        }
-    });
-}
+        setupAction.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
+            description.GroupName.ToUpperInvariant());
+    }
+});
+// }
 
 app.UseHttpsRedirection();
 

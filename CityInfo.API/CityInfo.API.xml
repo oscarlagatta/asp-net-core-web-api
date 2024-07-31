@@ -23,7 +23,7 @@
             <summary>
             Retrieves a city from the repository by its ID.
             </summary>
-            <param name="id">The ID of the city to retrieve.</param>
+            <param name="cityId">The ID of the city to retrieve.</param>
             <param name="includePointsOfInterest">Optional. If set to true, includes the points of interest for the city. Default is false.</param>
             <returns>An asynchronous task that represents the operation. The task result contains the ActionResult with the city or not found response.</returns>
             <response code="200">Returns the requested City</response>
